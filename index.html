@@ -2200,16 +2200,28 @@
       document.getElementById('ref-result').classList.remove('visible');
     }
 
-    
-    function calcMacros(kcal, protPct = 0.30, carbPct = 0.45, fatPct = 0.25) {
-      return {
-        prot: Math.round((kcal * protPct) / 4),
-        carb: Math.round((kcal * carbPct) / 4),
-        fat:  Math.round((kcal * fatPct)  / 9)
+    function calcMacros(kcal, peso, objetivo) {
+      const fatores = {
+        perder_leve:     { prot: 2.0, fatMin: 1.0 },
+        perder_moderado: { prot: 2.3, fatMin: 1.0 },
+        perder_agressivo:{ prot: 2.7, fatMin: 1.0 },
+        manter:          { prot: 1.8, fatMin: 1.0 },
+        recomp:          { prot: 2.2, fatMin: 1.0 },
+        ganhar_leve:     { prot: 1.8, fatMin: 1.0 },
+        ganhar_moderado: { prot: 2.0, fatMin: 1.0 },
+        ganhar_agressivo:{ prot: 2.0, fatMin: 1.0 },
       };
+
+      const f = fatores[objetivo] || { prot: 2.0, fatMin: 1.0 };
+
+      const prot = Math.round(f.prot * peso);
+      const fat  = Math.max(Math.round(f.fatMin * peso), Math.round((kcal * 0.20) / 9));
+      const carbKcal = kcal - (prot * 4) - (fat * 9);
+      const carb = Math.max(0, Math.round(carbKcal / 4));
+
+      return { prot, fat, carb };
     }
 
-    
     function showPanels(obj) {
       ['perder','manter','ganhar'].forEach(o => {
         const strip = document.getElementById('strip-' + o);
@@ -2227,7 +2239,6 @@
       document.getElementById('macros-subtitle').textContent = subtitles[obj];
     }
 
-    
     function calculate() {
       const peso   = parseFloat(document.getElementById('peso').value);
       const idade  = parseFloat(document.getElementById('idade').value);
@@ -2262,9 +2273,9 @@
           animateValue('def-mod',  fmt(defMod));
           animateValue('def-agr',  fmt(defAgr));
 
-          const mL = calcMacros(defLeve);
-          const mM = calcMacros(defMod);
-          const mA = calcMacros(defAgr);
+          const mL = calcMacros(defLeve, peso, 'perder_leve');
+          const mM = calcMacros(defMod,  peso, 'perder_moderado');
+          const mA = calcMacros(defAgr,  peso, 'perder_agressivo');
 
           animateValue('m-leve-prot', mL.prot+'g'); animateValue('m-leve-carb', mL.carb+'g'); animateValue('m-leve-fat', mL.fat+'g');
           animateValue('m-mod-prot',  mM.prot+'g'); animateValue('m-mod-carb',  mM.carb+'g'); animateValue('m-mod-fat',  mM.fat+'g');
@@ -2274,28 +2285,28 @@
           if (noteEl) noteEl.textContent = (tdee - defMod).toLocaleString('pt-BR') + ' kcal/dia';
 
           updateMealPlanner({
-            leve:     { label: 'Déficit Leve',     desc: 'Processo gradual · −14% das calorias',        ideal: false, kcal: defLeve, prot: mL.prot, carb: mL.carb, fat: mL.fat },
-            moderado: { label: 'Déficit Moderado',  desc: 'Equilíbrio ideal · −22% das calorias',        ideal: true,  kcal: defMod,  prot: mM.prot, carb: mM.carb, fat: mM.fat },
-            agressivo:{ label: 'Déficit Agressivo', desc: 'Somente se necessário · −28% das calorias',   ideal: false, kcal: defAgr,  prot: mA.prot, carb: mA.carb, fat: mA.fat }
+            leve:      { label: 'Déficit Leve',      desc: 'Processo gradual · −14% das calorias',      ideal: false, kcal: defLeve, prot: mL.prot, carb: mL.carb, fat: mL.fat },
+            moderado:  { label: 'Déficit Moderado',   desc: 'Equilíbrio ideal · −22% das calorias',      ideal: true,  kcal: defMod,  prot: mM.prot, carb: mM.carb, fat: mM.fat },
+            agressivo: { label: 'Déficit Agressivo',  desc: 'Somente se necessário · −28% das calorias', ideal: false, kcal: defAgr,  prot: mA.prot, carb: mA.carb, fat: mA.fat }
           });
         }
 
         if (objective === 'manter') {
           animateValue('man-kcal', fmt(tdee));
 
-          const mBase = calcMacros(tdee, 0.30, 0.45, 0.25);
+          const mBase = calcMacros(tdee, peso, 'manter');
           animateValue('m-man-prot', mBase.prot+'g');
           animateValue('m-man-carb', mBase.carb+'g');
           animateValue('m-man-fat',  mBase.fat+'g');
 
-          const mAlt = calcMacros(tdee, 0.40, 0.35, 0.25);
+          const mAlt = calcMacros(tdee, peso, 'recomp');
           animateValue('m-man-prot-alt', mAlt.prot+'g');
           animateValue('m-man-carb-alt', mAlt.carb+'g');
           animateValue('m-man-fat-alt',  mAlt.fat+'g');
 
           updateMealPlanner({
-            manutencao: { label: 'Manutenção',           desc: 'Dieta isocalórica · 100% do TDEE',              ideal: true,  kcal: tdee,      prot: mBase.prot, carb: mBase.carb, fat: mBase.fat },
-            recomp:     { label: 'Recomposição Corporal', desc: 'Proteína elevada · foco em massa magra',        ideal: false, kcal: tdee,      prot: mAlt.prot,  carb: mAlt.carb,  fat: mAlt.fat  }
+            manutencao: { label: 'Manutenção',            desc: 'Dieta isocalórica · 100% do TDEE',       ideal: true,  kcal: tdee, prot: mBase.prot, carb: mBase.carb, fat: mBase.fat },
+            recomp:     { label: 'Recomposição Corporal', desc: 'Proteína elevada · foco em massa magra',  ideal: false, kcal: tdee, prot: mAlt.prot,  carb: mAlt.carb,  fat: mAlt.fat  }
           });
         }
 
@@ -2308,9 +2319,9 @@
           animateValue('sur-mod',  fmt(surMod));
           animateValue('sur-agr',  fmt(surAgr));
 
-          const mL = calcMacros(surLeve, 0.30, 0.48, 0.22);
-          const mM = calcMacros(surMod,  0.30, 0.50, 0.20);
-          const mA = calcMacros(surAgr,  0.28, 0.52, 0.20);
+          const mL = calcMacros(surLeve, peso, 'ganhar_leve');
+          const mM = calcMacros(surMod,  peso, 'ganhar_moderado');
+          const mA = calcMacros(surAgr,  peso, 'ganhar_agressivo');
 
           animateValue('m-sur-leve-prot', mL.prot+'g'); animateValue('m-sur-leve-carb', mL.carb+'g'); animateValue('m-sur-leve-fat', mL.fat+'g');
           animateValue('m-sur-mod-prot',  mM.prot+'g'); animateValue('m-sur-mod-carb',  mM.carb+'g'); animateValue('m-sur-mod-fat',  mM.fat+'g');
@@ -2320,9 +2331,9 @@
           if (noteEl) noteEl.textContent = (surMod - tdee).toLocaleString('pt-BR') + ' kcal/dia';
 
           updateMealPlanner({
-            leve:      { label: 'Superávit Leve',      desc: 'Ganho limpo e gradual · +8% das calorias',       ideal: false, kcal: surLeve, prot: mL.prot, carb: mL.carb, fat: mL.fat },
-            moderado:  { label: 'Superávit Moderado',   desc: 'Melhor taxa de ganho · +15% das calorias',       ideal: true,  kcal: surMod,  prot: mM.prot, carb: mM.carb, fat: mM.fat },
-            agressivo: { label: 'Superávit Agressivo',  desc: 'Ganho máximo · +25% das calorias',               ideal: false, kcal: surAgr,  prot: mA.prot, carb: mA.carb, fat: mA.fat }
+            leve:      { label: 'Superávit Leve',      desc: 'Ganho limpo e gradual · +8% das calorias',  ideal: false, kcal: surLeve, prot: mL.prot, carb: mL.carb, fat: mL.fat },
+            moderado:  { label: 'Superávit Moderado',   desc: 'Melhor taxa de ganho · +15% das calorias',  ideal: true,  kcal: surMod,  prot: mM.prot, carb: mM.carb, fat: mM.fat },
+            agressivo: { label: 'Superávit Agressivo',  desc: 'Ganho máximo · +25% das calorias',          ideal: false, kcal: surAgr,  prot: mA.prot, carb: mA.carb, fat: mA.fat }
           });
         }
 
