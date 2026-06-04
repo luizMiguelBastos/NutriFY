@@ -49,6 +49,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    
     body::before {
       content: '';
       position: fixed;
@@ -59,6 +60,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
 
+    
     nav {
       position: sticky;
       top: 0;
@@ -119,6 +121,7 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
 
+    
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -127,6 +130,7 @@
       overflow: hidden;
     }
 
+    
     .hero-left {
       background: var(--black-soft);
       display: flex;
@@ -216,6 +220,7 @@
     }
     .hero-cta svg { width: 18px; height: 18px; }
 
+    
     .hero-right {
       background: var(--purple-light-bg);
       display: flex;
@@ -235,6 +240,7 @@
       opacity: 0.3;
     }
 
+    
     .calc-card {
       background: rgba(255,255,255,0.12);
       backdrop-filter: blur(20px);
@@ -254,6 +260,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    
     .gender-toggle {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -285,6 +292,7 @@
       background: rgba(255,255,255,0.25);
     }
 
+    
     .inputs-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -341,6 +349,7 @@
       pointer-events: none;
     }
 
+    
     .section-label {
       font-size: 0.7rem;
       font-weight: 700;
@@ -393,6 +402,7 @@
     }
     input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
+    
     .objective-btns {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -424,6 +434,7 @@
       color: var(--white);
     }
 
+    
     .calc-actions {
       display: flex;
       align-items: center;
@@ -471,6 +482,7 @@
     .btn-calc:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
     .btn-calc:active { transform: translateY(0); }
 
+    
     #results {
       opacity: 0;
       transform: translateY(30px);
@@ -529,6 +541,7 @@
       margin-top: 4px;
     }
 
+    
     .deficit-strip {
       background: var(--black-soft);
       display: grid;
@@ -585,6 +598,7 @@
     .tag-ideal   { background: rgba(123,92,245,0.35); color: var(--white); }
     .tag-warning { background: rgba(255,80,80,0.15); color: #FF6B6B; }
 
+    
     .macros-section {
       background: var(--black);
       padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
@@ -592,6 +606,7 @@
       overflow: hidden;
     }
 
+    
     .macros-section::before {
       content: 'MACRO';
       position: absolute;
@@ -606,6 +621,7 @@
       user-select: none;
     }
 
+    
     .macros-section::after {
       content: '';
       position: absolute;
@@ -662,6 +678,7 @@
       50%       { transform: translateY(8px); }
     }
 
+    
     .macros-grid {
       display: grid;
       grid-template-columns: 1fr 1.28fr 1fr;
@@ -671,6 +688,7 @@
       align-items: center;
     }
 
+    
     .macro-card {
       border-radius: var(--radius-xl);
       padding: clamp(1.75rem, 2.5vw, 2.5rem);
@@ -680,6 +698,7 @@
       text-align: center;
     }
 
+    
     .macro-card:not(.featured) {
       background: var(--purple-light-bg);
       color: var(--white);
@@ -708,6 +727,7 @@
       box-shadow: 0 20px 48px rgba(123,92,245,0.35);
     }
 
+    
     .macro-card.featured {
       background: var(--black-card);
       border: 1px solid var(--purple);
@@ -740,6 +760,7 @@
       box-shadow: 0 0 0 1px var(--purple), 0 40px 100px rgba(123,92,245,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
+    
     .macro-badge {
       display: inline-flex;
       align-items: center;
@@ -790,6 +811,7 @@
       margin-bottom: 2rem;
     }
 
+    
     .macro-divider {
       width: 32px;
       height: 2px;
@@ -802,6 +824,7 @@
       width: 48px;
     }
 
+    
     .macro-row {
       margin-bottom: 1.5rem;
       position: relative;
@@ -833,6 +856,7 @@
       color: rgba(255,255,255,0.6);
     }
 
+    
     .macro-row + .macro-row::before {
       content: '';
       display: block;
@@ -842,6 +866,7 @@
       margin: 0 auto 1.5rem;
     }
 
+    
     .macro-kcal-note {
       margin-top: 2rem;
       padding-top: 1.25rem;
@@ -858,6 +883,7 @@
       font-weight: 700;
     }
 
+    
     .macros-pills {
       display: flex;
       justify-content: center;
@@ -906,6 +932,7 @@
       line-height: 1.4;
     }
 
+    
     .explainer {
       background: var(--black);
       padding: 0 clamp(2rem, 5vw, 5rem) clamp(3rem, 5vw, 5rem);
@@ -927,6 +954,7 @@
     }
     .explainer-box strong { color: var(--white); font-weight: 700; }
 
+    
     footer {
       background: var(--black);
       border-top: 1px solid var(--gray-border);
@@ -959,6 +987,7 @@
     }
     .footer-links a:hover { color: var(--white); }
 
+    
     .results-eyebrow {
       font-size: 0.65rem;
       font-weight: 700;
@@ -968,6 +997,7 @@
       margin-bottom: 0.6rem;
     }
 
+    
     .deficit-featured {
       background: var(--black-card);
       border: 1px solid var(--purple) !important;
@@ -996,12 +1026,15 @@
       vertical-align: middle;
     }
 
+    
     .tag-sur-mild    { background: rgba(92,232,197,0.12); color: #5CE8C5; }
     .tag-sur-ideal   { background: rgba(92,232,197,0.3);  color: var(--white); }
     .tag-sur-warning { background: rgba(255,181,71,0.15); color: #FFB547; }
 
+    
     .surplus-strip { border-top-color: #5CE8C5 !important; }
 
+    
     .manter-strip {
       background: var(--black-soft);
       display: grid;
@@ -1069,6 +1102,7 @@
       margin-top: 7px;
     }
 
+    
     .manter-featured {
       text-align: left !important;
     }
@@ -1100,6 +1134,7 @@
       margin: 0;
     }
 
+    
     .macros-single {
       grid-template-columns: 1fr 1.28fr 1fr !important;
     }
@@ -1111,6 +1146,7 @@
       .macros-single { grid-template-columns: 1fr !important; }
     }
 
+    
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -1118,6 +1154,7 @@
     }
     .reveal.in { opacity: 1; transform: none; }
 
+    
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-left { min-height: 55vw; }
@@ -1150,6 +1187,7 @@
       footer { flex-direction: column; align-items: flex-start; }
     }
 
+    
     .spinner {
       display: none;
       width: 20px; height: 20px;
@@ -1164,11 +1202,17 @@
     .btn-calc.loading .spinner { display: block; }
     .btn-calc.loading span { display: none; }
 
+    
+    .site-section-hidden {
+      display: none !important;
+    }
+
     #activity-slider {
       --fill: 33%;
       background: linear-gradient(to right, rgba(255,255,255,0.8) var(--fill), rgba(255,255,255,0.2) var(--fill));
     }
 
+    
     #refeicoes {
       background: var(--black-soft);
       padding: clamp(3rem,6vw,6rem) clamp(2rem,5vw,5rem);
@@ -1221,6 +1265,7 @@
       line-height: 1.6;
     }
 
+    
     .ref-step {
       background: var(--black-card);
       border: 1px solid var(--gray-border);
@@ -1291,6 +1336,7 @@
     .meal-count-btn:not(.active):hover .mc-num,
     .meal-count-btn:not(.active):hover .mc-lbl { color: var(--white); }
 
+    
     .hunger-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1319,6 +1365,7 @@
       transition: color var(--transition);
     }
 
+    
     .scenario-btns {
       display: flex;
       flex-direction: column;
@@ -1417,6 +1464,7 @@
       background: rgba(123,92,245,.06);
     }
 
+    
     #ref-result {
       opacity: 0;
       transform: translateY(20px);
@@ -1509,6 +1557,7 @@
       font-weight: 300;
     }
 
+    
     .meal-macros {
       display: flex;
       gap: .5rem;
@@ -1572,6 +1621,7 @@
       margin-top: 2px;
     }
 
+    
     .ref-totals {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1602,6 +1652,7 @@
       margin-top: 3px;
     }
 
+    
     .hunger-highlight-note {
       display: flex;
       align-items: flex-start;
@@ -1634,14 +1685,15 @@
 </head>
 <body>
 
+  
   <nav role="navigation" aria-label="Navegação principal">
     <a href="#" class="logo">nutri<span>F</span>y</a>
 
     <ul class="nav-links" id="nav-links">
-      <li><a href="#calculator" class="active">Calculadora</a></li>
-      <li><a href="#results">Resultados</a></li>
-      <li><a href="#macros">Macronutrientes</a></li>
-      <li><a href="#refeicoes">Refeições</a></li>
+      <li><a href="#calculator" id="nav-calculator">Calculadora</a></li>
+      <li><a href="#results" id="nav-results">Resultados</a></li>
+      <li><a href="#macros" id="nav-macros">Macronutrientes</a></li>
+      <li><a href="#refeicoes" id="nav-refeicoes">Refeições</a></li>
     </ul>
 
     <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0" aria-expanded="false">
@@ -1649,8 +1701,10 @@
     </div>
   </nav>
 
+  
   <section class="hero" id="calculator">
 
+    
     <div class="hero-left">
       <div class="hero-tag">Calculadora TDEE</div>
 
@@ -1674,14 +1728,17 @@
       </div>
     </div>
 
+    
     <div class="hero-right">
       <div class="calc-card" role="main" aria-label="Formulário da calculadora">
 
+        
         <div class="gender-toggle" role="group" aria-label="Sexo biológico">
           <button class="gender-btn active" id="btn-homem" aria-pressed="true" onclick="setGender('homem')">Homem</button>
           <button class="gender-btn" id="btn-mulher" aria-pressed="false" onclick="setGender('mulher')">Mulher</button>
         </div>
 
+        
         <div class="inputs-row">
           <div class="input-wrap">
             <input type="number" id="peso" min="30" max="300" placeholder=" " aria-label="Peso em quilogramas" />
@@ -1700,6 +1757,7 @@
           </div>
         </div>
 
+        
         <div class="section-label">Nível de Atividade</div>
         <p class="activity-desc" id="activity-desc" aria-live="polite">
           <strong>Médio:</strong> Pessoa que faz atividades leves ou exercícios ocasionais durante a semana, com alguma movimentação no dia a dia, mas ainda com rotina mais parada.
@@ -1714,6 +1772,7 @@
                  oninput="updateActivity(this.value)" />
         </div>
 
+        
         <div class="section-label" style="margin-top:1rem;">Objetivo</div>
         <div class="objective-btns" style="margin-top:0.6rem;" role="group" aria-label="Objetivo nutricional">
           <button class="obj-btn" id="obj-ganhar" aria-pressed="false" onclick="setObjective('ganhar')">Ganhar</button>
@@ -1721,6 +1780,7 @@
           <button class="obj-btn active" id="obj-perder" aria-pressed="true" onclick="setObjective('perder')">Perder</button>
         </div>
 
+        
         <div class="calc-actions">
           <button class="btn-clear" onclick="clearForm()">Limpar</button>
           <button class="btn-calc" id="btn-calc" onclick="calculate()" aria-live="polite">
@@ -1733,8 +1793,10 @@
     </div>
   </section>
 
-  <section id="results" aria-label="Resultados da calculadora">
+  
+  <section id="results" aria-label="Resultados da calculadora" class="site-section-hidden">
 
+    
     <div class="results-banner">
       <div>
         <div class="results-eyebrow" id="results-eyebrow">PERDER PESO</div>
@@ -1753,6 +1815,7 @@
       </div>
     </div>
 
+    
     <div class="deficit-strip" id="strip-perder">
       <div class="deficit-card">
         <div class="deficit-name">Déficit Leve</div>
@@ -1774,6 +1837,7 @@
       </div>
     </div>
 
+    
     <div class="manter-strip" id="strip-manter" style="display:none">
       <div class="manter-main">
         <div class="manter-label">Sua Manutenção Calórica</div>
@@ -1789,6 +1853,7 @@
       </div>
     </div>
 
+    
     <div class="deficit-strip surplus-strip" id="strip-ganhar" style="display:none">
       <div class="deficit-card">
         <div class="deficit-name">Superávit Leve</div>
@@ -1812,7 +1877,8 @@
 
   </section>
 
-  <section class="macros-section" id="macros" aria-label="Macronutrientes">
+  
+  <section class="macros-section site-section-hidden" id="macros" aria-label="Macronutrientes">
     <div class="macros-inner">
 
       <div class="macros-header">
@@ -1821,6 +1887,7 @@
         <span class="macros-arrow" aria-hidden="true">↓</span>
       </div>
 
+      
       <div class="macros-grid" id="macros-perder">
         <div class="macro-card">
           <div class="macro-card-title">Déficit Leve</div>
@@ -1850,6 +1917,7 @@
         </div>
       </div>
 
+      
       <div class="macros-grid macros-single" id="macros-manter" style="display:none">
         <div class="macro-card">
           <div class="macro-card-title">Manutenção Calórica</div>
@@ -1878,6 +1946,7 @@
         </div>
       </div>
 
+      
       <div class="macros-grid" id="macros-ganhar" style="display:none">
         <div class="macro-card">
           <div class="macro-card-title">Superávit Leve</div>
@@ -1907,6 +1976,7 @@
         </div>
       </div>
 
+      
       <div class="macros-pills">
         <div class="macro-pill">
           <div class="pill-dot prot"></div>
@@ -1934,7 +2004,8 @@
     </div>
   </section>
 
-  <div class="explainer">
+  
+  <div class="explainer site-section-hidden" id="explainer">
     <div class="explainer-box">
       <p>
         <strong>O que são macronutrientes? —</strong>
@@ -1945,7 +2016,8 @@
     </div>
   </div>
 
-  <section id="refeicoes" aria-label="Divisão de refeições">
+  
+  <section id="refeicoes" aria-label="Divisão de refeições" class="site-section-hidden">
     <div class="ref-inner">
 
       <div class="ref-header">
@@ -1953,6 +2025,7 @@
         <p>Monte sua estratégia alimentar com base na sua rotina — <br>indique quantas refeições faz por dia e quando sente mais fome.</p>
       </div>
 
+      
       <div class="ref-step">
         <div class="ref-step-label">Passo 01</div>
         <div class="ref-step-question">Quantas refeições você faz por dia?</div>
@@ -1972,6 +2045,7 @@
         </div>
       </div>
 
+      
       <div class="ref-step">
         <div class="ref-step-label">Passo 02</div>
         <div class="ref-step-question">Em qual momento do dia você sente mais fome?</div>
@@ -1999,12 +2073,14 @@
         </div>
       </div>
 
+      
       <div class="ref-step" id="ref-scenario-step">
         <div class="ref-step-label">Passo 03</div>
         <div class="ref-step-question">Qual cenário você quer usar como base?</div>
         <div class="scenario-btns" id="scenario-btns" role="group" aria-label="Cenário de calorias"></div>
       </div>
 
+      
       <div id="ref-result">
         <div class="ref-step">
           <div class="ref-result-header">
@@ -2045,6 +2121,7 @@
     </div>
   </section>
 
+  
   <footer>
     <div class="footer-brand">
       <a href="#" class="logo">nutri<span>F</span>y</a>
@@ -2057,6 +2134,7 @@
     </nav>
   </footer>
 
+  
   <script>
     
     let gender    = 'homem';
@@ -2073,6 +2151,7 @@
 
     const objLabels = { perder: 'PERDER PESO', manter: 'MANUTENÇÃO', ganhar: 'GANHAR MASSA' };
 
+    
     function updateActivity(val) {
       activity = parseInt(val);
       document.getElementById('activity-desc').innerHTML = activityInfo[activity].desc;
@@ -2082,6 +2161,7 @@
     }
     updateActivity(1);
 
+    
     function setGender(g) {
       gender = g;
       document.getElementById('btn-homem').classList.toggle('active', g === 'homem');
@@ -2090,6 +2170,7 @@
       document.getElementById('btn-mulher').setAttribute('aria-pressed', g === 'mulher');
     }
 
+    
     function setObjective(o) {
       objective = o;
       ['ganhar','manter','perder'].forEach(id => {
@@ -2099,6 +2180,7 @@
       });
     }
 
+    
     function clearForm() {
       ['peso','idade','altura'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('activity-slider').value = 1;
@@ -2106,12 +2188,19 @@
       setGender('homem');
       setObjective('perder');
       document.getElementById('results').classList.remove('visible');
-
+      document.getElementById('refeicoes').classList.add('site-section-hidden');
+      document.getElementById('macros').classList.add('site-section-hidden');
+      document.getElementById('explainer').classList.add('site-section-hidden');
+      document.getElementById('results').classList.add('site-section-hidden');
       document.querySelectorAll('.deficit-value, .kcal-value, .macro-val, .manter-value').forEach(el => {
         el.textContent = '—';
       });
+      selectedScenario = null;
+      availableScenarios = {};
+      document.getElementById('ref-result').classList.remove('visible');
     }
 
+    
     function calcMacros(kcal, protPct = 0.30, carbPct = 0.45, fatPct = 0.25) {
       return {
         prot: Math.round((kcal * protPct) / 4),
@@ -2120,6 +2209,7 @@
       };
     }
 
+    
     function showPanels(obj) {
       ['perder','manter','ganhar'].forEach(o => {
         const strip = document.getElementById('strip-' + o);
@@ -2137,6 +2227,7 @@
       document.getElementById('macros-subtitle').textContent = subtitles[obj];
     }
 
+    
     function calculate() {
       const peso   = parseFloat(document.getElementById('peso').value);
       const idade  = parseFloat(document.getElementById('idade').value);
@@ -2237,6 +2328,11 @@
 
         showPanels(objective);
 
+        ['results','macros','explainer','refeicoes'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.remove('site-section-hidden');
+        });
+
         const results = document.getElementById('results');
         results.classList.add('visible');
         setTimeout(() => results.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
@@ -2244,6 +2340,7 @@
       }, 600);
     }
 
+    
     function animateValue(id, target) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -2282,6 +2379,30 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+    const navSections = ['calculator','results','macros','refeicoes'];
+    const navIds      = ['nav-calculator','nav-results','nav-macros','nav-refeicoes'];
+
+    const activeNavObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('active');
+          });
+          const idx = navSections.indexOf(entry.target.id);
+          if (idx > -1) {
+            const activeEl = document.getElementById(navIds[idx]);
+            if (activeEl) activeEl.classList.add('active');
+          }
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-60px 0px 0px 0px' });
+
+    navSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) activeNavObserver.observe(el);
+    });
+
     const style = document.createElement('style');
     style.textContent = `
       @keyframes shake {
@@ -2292,11 +2413,14 @@
     `;
     document.head.appendChild(style);
 
+    
+
     let mealCount        = 4;
     let hungerTime       = 'tarde';
-    let selectedScenario = null; // key into availableScenarios
-    let availableScenarios = {}; // populated by updateMealPlanner()
+    let selectedScenario = null;
+    let availableScenarios = {};
 
+    
     const mealSchedules = {
       3: [
         { name: 'Café da manhã', key: 'manha',  time: '7h – 8h'   },
@@ -2342,6 +2466,7 @@
       return weights.map(w => w / sum);
     }
 
+    
     function setMealCount(n) {
       mealCount = n;
       [3, 4, 5].forEach(v => {
@@ -2370,6 +2495,7 @@
       renderMeals();
     }
 
+    
     function buildScenarioButtons() {
       const container = document.getElementById('scenario-btns');
       container.innerHTML = '';
@@ -2391,6 +2517,7 @@
       });
     }
 
+    
     function renderMeals() {
       if (!selectedScenario || !availableScenarios[selectedScenario]) return;
 
@@ -2456,6 +2583,7 @@
       document.getElementById('ref-result').classList.add('visible');
     }
 
+    
     function updateMealPlanner(scenarios) {
 
       availableScenarios = scenarios;
